@@ -6,11 +6,10 @@ using System.Threading.Tasks;
 
 namespace ASP.NET_Core_Empty_Project.Controllers
 {
-    public class HomeController : Controller
+    public class HomeController1 : Controller
     {
         public IActionResult Index()
         {
-            ViewBag.test = "This is a viewbag test, site bugged?";
             return View();
         }
     }

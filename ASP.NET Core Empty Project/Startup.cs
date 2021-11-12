@@ -29,6 +29,7 @@ namespace ASP.NET_Core_Empty_Project
             app.UseStaticFiles();
 
             app.UseRouting();
+            app.UseHttpsRedirection();
 
             app.UseEndpoints(endpoints =>
             {
@@ -36,6 +37,9 @@ namespace ASP.NET_Core_Empty_Project
                     name: "Default",
                     pattern: "{controller=Home}/{action=Index}/{id?}"
                     );
+                endpoints.MapControllerRoute(name: "test",
+                    pattern: "TestView",
+                    defaults: new { controller = "Testing", action = "TestView" }); //Custom route
                 
             });
         }
