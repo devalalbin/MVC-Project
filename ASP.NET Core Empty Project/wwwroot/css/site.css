@@ -1,44 +1,37 @@
-﻿body {
-    background-color: lightskyblue;
-    padding-top: 50px;
-    padding-bottom: 20px;
+﻿body > header a, a:visited, a:hover, a:focus {
+    text-decoration: none;
+    color: #000;
 }
 
-/* Set padding to keep content from hitting the edges */
-.body-content {
-    padding-left: 15px;
-    padding-right: 15px;
+body {
+    font-family: sans-serif;
+}
+body > header {
+        width: 100%;
+        align-items: center;
+        border-bottom: 1px solid black;
+        font-size: 22px;
 }
 
-/* Set width on the form input elements since they're 100% wide by default */
-input,
-select,
-textarea {
-    max-width: 280px;
+footer {
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    white-space: nowrap;
+    line-height: 60px; 
+}
+nav.container {
+    display: flex;
+    justify-content: space-between;
+    flex-direction: row;
 }
 
-/* styles for validation helpers */
-.field-validation-error {
-    color: #b94a48;
-}
 
-.field-validation-valid {
-    display: none;
-}
-
-input.input-validation-error {
-    border: 1px solid #b94a48;
-}
-
-input[type="checkbox"].input-validation-error {
-    border: 0 none;
-}
-
-.validation-summary-errors {
-    color: #b94a48;
-}
-
-.validation-summary-valid {
-    display: none;
+.navbar-links { /*flexbox for our links */
+    text-decoration: none;
+    display: flex;
+    list-style: none;
+    justify-content: space-between;
+    flex-direction: row;
 }
 

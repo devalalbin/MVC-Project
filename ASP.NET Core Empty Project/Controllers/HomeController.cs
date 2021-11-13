@@ -10,7 +10,7 @@ namespace ASP.NET_Core_Empty_Project.Controllers
     {
         public IActionResult Index()
         {
-            ViewBag.test = "This is a viewbag test, site bugged?";
+            ViewBag.test = "Index sidan!";
             return View();
         }
     }

@@ -1,4 +1,5 @@
 ﻿using ASP.NET_Core_Empty_Project.Models;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using System;
 using System.Collections.Generic;
@@ -20,11 +21,13 @@ namespace ASP.NET_Core_Empty_Project.Controllers
         }
         public IActionResult Person() //get 
         {
+            ViewBag.Message = PersonModel.WriteMessage();
             return View();
         }
         [HttpPost]
         public IActionResult Person(string name,int age)//set
         {
+            HttpContext.Session.SetString("Name", name);
             PersonModel pm = new PersonModel();
              pm.Name = name;
              pm.Age = age;
@@ -33,6 +36,16 @@ namespace ASP.NET_Core_Empty_Project.Controllers
             return View();
             //return View("Index");
             //return RedirectToAction("Index"); //redirect runs all the code if used
+        }
+        public IActionResult SetSession() //example of sending a session from 1 view to another
+        {
+            HttpContext.Session.SetString("TestSession", "This is a test! ");
+            return View();
+        }
+        public IActionResult GetSession()
+        {
+            ViewBag.SessionMessage = HttpContext.Session.GetString("TestSession"); // using our session key
+            return View();
         }
     }
 }

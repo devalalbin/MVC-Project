@@ -17,6 +17,14 @@ namespace ASP.NET_Core_Empty_Project
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddMvc();
+            services.AddDistributedMemoryCache();
+            services.AddSession(options =>
+            {
+                options.IdleTimeout = TimeSpan.FromMinutes(10); //how long a session should last if not used
+                options.Cookie.HttpOnly = true;
+                options.Cookie.IsEssential = true;
+            });
+           
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -29,7 +37,10 @@ namespace ASP.NET_Core_Empty_Project
             app.UseStaticFiles();
 
             app.UseRouting();
+
             app.UseHttpsRedirection();
+
+            app.UseSession();
 
             app.UseEndpoints(endpoints =>
             {
@@ -40,7 +51,10 @@ namespace ASP.NET_Core_Empty_Project
                 endpoints.MapControllerRoute(name: "test",
                     pattern: "TestView",
                     defaults: new { controller = "Testing", action = "TestView" }); //Custom route
-                
+                endpoints.MapControllerRoute(name: "info",
+                    pattern: "About",
+                    defaults: new { controller = "Info", action = "About" }); //Custom route
+
             });
         }
     }

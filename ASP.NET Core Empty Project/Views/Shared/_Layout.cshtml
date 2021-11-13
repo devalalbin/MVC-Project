@@ -2,7 +2,7 @@
 
 <html>
 <head>
-    <meta name="viewport" content="width=device-width" />
+    <meta name="viewport" content="width=device-width"/>
     <title>@ViewBag.Title</title>
     <meta charset="UTF-8">
     <link rel="stylesheet" href="~/css/site.css">
@@ -11,24 +11,22 @@
     <header>
         <nav class="navbar">
             <div class="container">
-                <a class="navbar-logo" asp-area="" asp-controller="Home" asp-action="Index">Albin test</a>
-                <a asp-controller="Home" asp-action="Index"></a>
-                <div class="navbar-links">
-                    <ul>
+                <img src="~/images/mvc logo.png" class="navbar-logo" asp-area="" asp-controller="Home" asp-action="Index"/>
+                    <ul class="navbar-links">
                         <li class="nav-item">
                             <a class="nav-link" asp-area="" asp-controller="Home" asp-action="Index">Home </a>
-              
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" asp-area="" asp-controller="Testing" asp-action="Index">Testing index </a>
+                            <a class="nav-link" asp-area="" asp-controller="Info" asp-action="About">About </a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" asp-area="" asp-controller="Testing" asp-action="Person">Create Person</a>
+                            <a class="nav-link" asp-area="" asp-controller="Info" asp-action="Contact">Contact</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" asp-area="" asp-controller="Info" asp-action="Project">Projects</a>
                         </li>
                     </ul>
-                </div>
             </div>
-            
         </nav>
     </header>
     
