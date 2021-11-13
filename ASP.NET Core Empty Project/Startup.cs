@@ -48,12 +48,12 @@ namespace ASP.NET_Core_Empty_Project
                     name: "Default",
                     pattern: "{controller=Home}/{action=Index}/{id?}"
                     );
-                endpoints.MapControllerRoute(name: "test",
-                    pattern: "TestView",
-                    defaults: new { controller = "Testing", action = "TestView" }); //Custom route
                 endpoints.MapControllerRoute(name: "info",
                     pattern: "About",
                     defaults: new { controller = "Info", action = "About" }); //Custom route
+                endpoints.MapControllerRoute(name: "doctor", //When enterying /FeverCheck directs to the doctor
+                    pattern: "FeverCheck",
+                    defaults: new { controller = "Doctor", action = "Index" }); //Custom route
 
             });
         }

@@ -14,11 +14,20 @@
 
   <ItemGroup>
     <Compile Remove="Controllers\HomeController1.cs" />
-    <Compile Remove="Controllers\TestingController.cs" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Content Remove="Views\Doctor\TempCheck.cshtml" />
+    <Content Remove="Views\GetSession.cshtml" />
+    <Content Remove="Views\Index.cshtml" />
+    <Content Remove="Views\Person.cshtml" />
+    <Content Remove="Views\SetSession.cshtml" />
+    <Content Remove="Views\TestView.cshtml" />
   </ItemGroup>
 
   <ItemGroup>
     <Folder Include="Data\" />
+    <Folder Include="Views\NewFolder\" />
     <Folder Include="wwwroot\images\" />
   </ItemGroup>
 

@@ -1,4 +1,5 @@
-﻿using ASP.NET_Core_Empty_Project.Models;
+﻿/*
+using ASP.NET_Core_Empty_Project.Models;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using System;
@@ -16,23 +17,22 @@ namespace ASP.NET_Core_Empty_Project.Controllers
         }
         public IActionResult TestView()
         {
-            ViewBag.Message = PersonModel.WriteMessage(); //can use like this cause write message is static
+            ViewBag.Message = FeverModel.WriteMessage(); //can use like this cause write message is static
             return View();
         }
         public IActionResult Person() //get 
         {
-            ViewBag.Message = PersonModel.WriteMessage();
+            ViewBag.Message = FeverModel.WriteMessage();
             return View();
         }
         [HttpPost]
-        public IActionResult Person(string name,int age)//set
+        public IActionResult Person(int temp)//set
         {
-            HttpContext.Session.SetString("Name", name);
-            PersonModel pm = new PersonModel();
-             pm.Name = name;
-             pm.Age = age;
+            //HttpContext.Session.SetString("Name", name);
+            FeverModel pm = new FeverModel();
+             pm.Temp = temp;
 
-            ViewBag.Message = pm.CheckAge(age);
+            ViewBag.Message = pm.CheckTemp(age);
             return View();
             //return View("Index");
             //return RedirectToAction("Index"); //redirect runs all the code if used
@@ -49,3 +49,4 @@ namespace ASP.NET_Core_Empty_Project.Controllers
         }
     }
 }
+*/
