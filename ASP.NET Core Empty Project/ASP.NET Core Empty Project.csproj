@@ -6,11 +6,22 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Compile Remove="Views\Testing\**" />
+    <Content Remove="Views\Testing\**" />
+    <EmbeddedResource Remove="Views\Testing\**" />
+    <None Remove="Views\Testing\**" />
+  </ItemGroup>
+
+  <ItemGroup>
     <Compile Remove="Controllers\HomeController1.cs" />
+    <Compile Remove="Controllers\TestingController.cs" />
+    <Compile Remove="Models\PersonModel.cs" />
+    <Compile Remove="Models\SessionExtensions.cs" />
   </ItemGroup>
 
   <ItemGroup>
     <Folder Include="Data\" />
+    <Folder Include="Models\" />
     <Folder Include="wwwroot\images\" />
   </ItemGroup>
 
