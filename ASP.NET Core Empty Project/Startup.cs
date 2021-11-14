@@ -53,7 +53,10 @@ namespace ASP.NET_Core_Empty_Project
                     defaults: new { controller = "Info", action = "About" }); //Custom route
                 endpoints.MapControllerRoute(name: "doctor", //When enterying /FeverCheck directs to the doctor
                     pattern: "FeverCheck",
-                    defaults: new { controller = "Doctor", action = "Index" }); //Custom route
+                    defaults: new { controller = "Doctor", action = "FeverCheck" }); //Custom route
+                endpoints.MapControllerRoute(name: "guessing game", //When enterying /FeverCheck directs to the doctor
+                    pattern: "GuessingGame",
+                    defaults: new { controller = "GuessingGame", action = "Game" }); //Custom route
 
             });
         }
