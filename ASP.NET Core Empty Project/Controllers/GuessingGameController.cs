@@ -13,16 +13,23 @@ namespace ASP.NET_Core_Empty_Project.Controllers
         [HttpGet]
         public IActionResult Game()
         {
-            int rndNr = GameModel.GenerateNr();
-            HttpContext.Session.SetInt32("Random Number", rndNr);
+            int generatedNr = GameModel.GenerateNr();
+            HttpContext.Session.SetInt32("Random Number", generatedNr);
             ViewBag.Message = "Guess a number between 1 and 100!";
             return View("Game");
         }
         [HttpPost]
         public IActionResult Game(int guess) //get 
         {
+            ViewBag.Message = GameModel.WriteMessage();
             int rndNr = (int)HttpContext.Session.GetInt32("Random Number");
-            ViewBag.Message = GameModel.CheckNr(guess, rndNr);
+            ViewBag.Message2 = GameModel.CheckNr(guess, rndNr);
+
+            if (guess == rndNr)
+            {
+               HttpContext.Session.SetInt32("Random Number", GameModel.GenerateNr()); // setting a new value for the random number if user wins
+                ViewBag.Message = "Congratulations, Try guessing the new number!";
+            }
             return View();
 
         }

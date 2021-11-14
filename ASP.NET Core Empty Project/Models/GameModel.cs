@@ -9,7 +9,6 @@ namespace ASP.NET_Core_Empty_Project.Models
     {
         public static int count = 0;
 
-
         public static string WriteMessage()
         {
             return "Enter a number between 1 and 100";
@@ -37,7 +36,8 @@ namespace ASP.NET_Core_Empty_Project.Models
             {
                 if(guess == rndNr)
                 {
-                    message = "You guessed correctly!! it was " + rndNr+"You guessed it correctly in " + count + " guesses";
+                    message = "You guessed correctly!! it was " + rndNr+" You guessed it correctly in " + count + " guesses!";
+                    count = 0;
                 }
                 else if (guess > rndNr)
                 {
