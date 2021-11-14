@@ -21,7 +21,7 @@ namespace ASP.NET_Core_Empty_Project.Models
             {
                 message = "Sadly you seem to have a fever, go see a doctor!";
             }
-            if (temp <= 35)
+            else if (temp <= 35)
             {
                 message = "Sadly you seem to have hypothermia, go see a doctor quickly!";
             }
