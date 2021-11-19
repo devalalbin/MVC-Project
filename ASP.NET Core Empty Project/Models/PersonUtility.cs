@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace ASP.NET_Core_Empty_Project.Models
 {
-    public class PersonUtility //container for the information we need in people view.
+    public  class PersonUtility //container for the information we need in people view.
     {
         public static List<Person> peopleList = new List<Person>();
         private static int idCounter;

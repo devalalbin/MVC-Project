@@ -11,15 +11,15 @@ namespace ASP.NET_Core_Empty_Project.Controllers
     {
         public IActionResult People()
         {
-            PersonUtility personUtility = new PersonUtility();
+            PersonUtility pu = new PersonUtility(); 
 
-            PeopleViewModel peopleListViewModel = new PeopleViewModel() { PeopleListView = personUtility.Read() }; //returns the list of persons we created
+            PeopleViewModel vm = new PeopleViewModel() { PeopleListView = pu.Read() }; //returns the list of persons we created
         
-            if (peopleListViewModel.PeopleListView.Count == 0 || peopleListViewModel.PeopleListView == null) // Fills the list with 3 names if emptu (If you delete all people in list it will fill again)
+            if (vm.PeopleListView.Count == 0 || vm.PeopleListView == null) // Fills the list with 3 names if emptu (If you delete all people in list it will fill again)
             {
-                personUtility.GeneratePeople();
+                pu.GeneratePeople();
             }
-            return View(peopleListViewModel);
+            return View(vm);
         }
         [HttpPost]
         public IActionResult CreatePerson(CreatePersonViewModel createPerson)
@@ -29,18 +29,30 @@ namespace ASP.NET_Core_Empty_Project.Controllers
 
             if (ModelState.IsValid)
             {
-                vm.Name = createPerson.Name;
-                vm.PhoneNr = createPerson.PhoneNr;
-                vm.City = createPerson.City;
                 vm.PeopleListView = pu.Read();
-
-                pu.Create(createPerson.Name, createPerson.PhoneNr, createPerson.City);
+                pu.Create(createPerson.Name, createPerson.PhoneNr, createPerson.City); // adds a person to our list
                 ViewBag.Message = "Added person! ";
                 return View("People", vm);
             }
             else { ViewBag.Message = "Failed to add person, Try again!"; }
             vm.PeopleListView = pu.Read();
             return View("People",vm);
+        }
+
+        [HttpPost]
+        public IActionResult Search(PeopleViewModel viewModel) 
+        {
+            PersonUtility pu = new PersonUtility();
+            viewModel.PeopleListView.Clear(); //clear our list and fills it only with search results that matches
+
+            foreach (Person p in pu.Read())
+            {
+                if (p.Name.Contains(viewModel.FilterString, StringComparison.OrdinalIgnoreCase) || p.City.Contains(viewModel.FilterString, StringComparison.OrdinalIgnoreCase)) //searches name or city
+                {
+                    viewModel.PeopleListView.Add(p);
+                }
+            }
+            return View("People",viewModel);
         }
 
         public IActionResult DeletePerson(int id)

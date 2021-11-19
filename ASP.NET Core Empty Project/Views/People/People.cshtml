@@ -6,7 +6,17 @@
 <h1>People Index</h1>
 
 <div>
-    <button type="button" id="search">Search</button>
+    <form asp-controller="People" asp-action="Search" method="post" role="form">
+        @Html.AntiForgeryToken()
+        <br />
+        <label asp-for="FilterString"> Filter Person</label>
+        <br />
+        <input asp-for="FilterString" required />
+        <input type="submit" class="btn btn-primary" name="btnFilter" value="search" />
+    </form>
+
+    <br /><br />
+    <p> Add Person:</p>
     <form asp-controller="People" asp-action="CreatePerson" method="post">
         <label asp-for="Name"></label>
         <br />
@@ -23,7 +33,7 @@
         <input type="submit" value="Create person" />
         <br />
         <p>@ViewBag.Message</p>
-        <br/>
+        <br />
 
 
     </form>
@@ -39,16 +49,16 @@
         <tbody>
             @foreach (var item in Model.PeopleListView) //we can acces our list from our viewmodel
             {
-            <tr>
-                <td>@item.Name</td>
-                <td>@item.PhoneNr</td>
-                <td>@item.City</td>
-                <td>
-                    <a href="#" onclick="location.href =
+                <tr>
+                    <td>@item.Name</td>
+                    <td>@item.PhoneNr</td>
+                    <td>@item.City</td>
+                    <td>
+                        <a href="#" onclick="location.href =
                     '@Url.Action("DeletePerson","People",item)'">Delete</a> <!--If deleting all persons, list will fill with 3 new ones-->
 
-                </td>
-            </tr>
+                    </td>
+                </tr>
             }
         </tbody>
     </table>

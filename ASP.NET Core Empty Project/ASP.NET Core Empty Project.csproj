@@ -18,6 +18,8 @@
 
   <ItemGroup>
     <Compile Remove="Controllers\HomeController1.cs" />
+    <Compile Remove="Controllers\TestingController.cs" />
+    <Compile Remove="Models\SessionExtensions.cs" />
   </ItemGroup>
 
   <ItemGroup>

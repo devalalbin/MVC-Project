@@ -9,7 +9,7 @@ namespace ASP.NET_Core_Empty_Project.Models
     public class PeopleViewModel : CreatePersonViewModel//container for the information we need in people view. inherits the inputs from our frontend
     {
         public List<Person> PeopleListView { get; set; }
-        public string FilterString;
+        public string FilterString { get; set; }
         public PeopleViewModel()
         {
             PeopleListView = new List<Person>();
