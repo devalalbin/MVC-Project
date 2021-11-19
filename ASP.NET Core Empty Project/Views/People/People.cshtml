@@ -1,7 +1,55 @@
-﻿
+﻿@model PeopleViewModel
 @{
     ViewData["Title"] = "People";
 }
 
 <h1>People Index</h1>
 
+<div>
+    <button type="button" id="search">Search</button>
+    <form asp-controller="People" asp-action="CreatePerson" method="post">
+        <label asp-for="Name"></label>
+        <br />
+        <input asp-for="Name" />
+        <br />
+        <label asp-for="PhoneNr"></label>
+        <br />
+        <input asp-for="PhoneNr" />
+        <br />
+        <label asp-for="City"></label>
+        <br />
+        <input asp-for="City" />
+        <br />
+        <input type="submit" value="Create person" />
+        <br />
+        <p>@ViewBag.Message</p>
+        <br/>
+
+
+    </form>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Name</th>
+                <th>Phone Number</th>
+                <th>City</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model.PeopleListView) //we can acces our list from our viewmodel
+            {
+            <tr>
+                <td>@item.Name</td>
+                <td>@item.PhoneNr</td>
+                <td>@item.City</td>
+                <td>
+                    <a href="#" onclick="location.href =
+                    '@Url.Action("DeletePerson","People",item)'">Delete</a> <!--If deleting all persons, list will fill with 3 new ones-->
+
+                </td>
+            </tr>
+            }
+        </tbody>
+    </table>
+</div>
