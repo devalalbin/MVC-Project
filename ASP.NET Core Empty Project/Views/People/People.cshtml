@@ -3,9 +3,9 @@
     ViewData["Title"] = "People";
 }
 
-<h1>People Index</h1>
 
-<div>
+<div class="container">
+    <h1>People Index</h1>
     <form asp-controller="People" asp-action="Search" method="post" role="form">
         @Html.AntiForgeryToken()
         <br />
@@ -38,26 +38,9 @@
 
     </form>
 
-    <table class="table">
-        <thead>
-            <tr>
-                <th>Name</th>
-                <th>Phone Number</th>
-                <th>City</th>
-            </tr>
-        </thead>
-        <tbody>
-            @foreach (var item in Model.PeopleListView) //we can acces our list from our viewmodel
-            {
-                <tr>
-                    <partial name="_partialPerson" model="item" />
-                    <td>
-                        <a href="#" onclick="location.href ='@Url.Action("DeletePerson","People",item)'">Delete</a> <!--If deleting all persons, list will fill with 3 new ones-->
-
-                    </td>
-                </tr>
-            }
-        </tbody>
+    <div>
+        <partial name="_partialPerson" model="Model.PeopleListView" />
+    </div>
     </table>
 </div>
 
