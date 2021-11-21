@@ -16,6 +16,33 @@
         <tbody>
             @foreach (var person in Model)
             {
+                <tr>
+                    <td>@person.Id</td>
+                    <td>@person.Name</td>
+                    <td>@person.PhoneNr</td>
+                    <td>@person.City</td>
+                    <td>
+                        <a href="#" onclick="location.href ='@Url.Action("DeletePerson","People",person)'">Delete</a>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>
+<div class="container">
+    <h2>People</h2>
+    <table class="table">
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Name</th>
+                <th>Number</th>
+                <th>City</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var person in Model)
+            {
             <tr>
                 <td>@person.Id</td>
                 <td>@person.Name</td>
