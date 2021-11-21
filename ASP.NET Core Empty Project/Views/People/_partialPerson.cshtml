@@ -1,17 +1,31 @@
-﻿@model Person
+﻿@model List<Person>
 @*
     For more information on enabling MVC for empty projects, visit http://go.microsoft.com/fwlink/?LinkID=397860
 *@
-<td>@Model.Name</td>
-<td>@Model.PhoneNr</td>
-<td>@Model.City</td>
-
-
-<!--div class="container">
-    <div class="row">
-        <div class="col-*-*">@Model.Name</div>
-        <div class="col-*-*">@Model.PhoneNr<</div>
-        <div class="col-*-*">@Model.City<</div>
-    </div>
-   </div>-->
-
+<div>
+    <h2>People</h2>
+    <table class="table">
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Name</th>
+                <th>Number</th>
+                <th>City</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var person in Model)
+            {
+                <tr>
+                    <td>@person.Id</td>
+                    <td>@person.Name</td>
+                    <td>@person.PhoneNr</td>
+                    <td>@person.City</td>
+                    <td>
+                        <a href="#" onclick="location.href ='@Url.Action("DeletePerson","People",person)'">Delete</a>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>

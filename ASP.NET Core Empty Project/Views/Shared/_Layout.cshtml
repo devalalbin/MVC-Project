@@ -2,16 +2,17 @@
 
 <html>
 <head>
-    <meta name="viewport" content="width=device-width"/>
+    <meta name="viewport" content="width=device-width" />
     <title>@ViewBag.Title</title>
     <meta charset="UTF-8">
     <link rel="stylesheet" href="~/css/site.css">
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
 </head>
 <body>
     <header>
         <nav class="navbar">
             <div class="container">
-                <img src="~/images/mvc logo.png" class="navbar-logo" asp-area="" asp-controller="Home" asp-action="Index"/>
+                <img src="~/images/mvc logo.png" class="navbar-logo" asp-area="" asp-controller="Home" asp-action="Index" />
                 <ul class="navbar-links">
                     <li class="nav-item">
                         <a class="nav-link" asp-area="" asp-controller="Home" asp-action="Index">Home </a>
@@ -38,8 +39,8 @@
             </div>
         </nav>
     </header>
-    
-    
+
+
     <div>
         @RenderBody()
     </div>
