@@ -1,11 +1,19 @@
-﻿<div>
+﻿<div class="container">
     <h2>@ViewBag.Title</h2>
 
     <div>
         <h2>Person list using Ajax</h2>
         <div id="errorMessages"></div>
 
-        <input type="button" class="btn btn-primary" onclick="GetPeople()" value="List people" />
+        <input type="button" class="btn btn-primary" onclick="getPeople()" value="List people" />
+
+
+
+        <label for="IdInput">Search by ID</label>
+        <input id="PersonId" type="number" />
+
+        <input type="button" class="btn btn-primary" onclick="getPersonById()" value="Details for Person" />
     </div>
 
+    <div id="PeopleList"></div>
 </div>

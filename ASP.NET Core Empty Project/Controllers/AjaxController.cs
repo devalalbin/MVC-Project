@@ -12,7 +12,15 @@ namespace ASP.NET_Core_Empty_Project.Controllers
     {
         public IActionResult Index()
         {
-            return View();
+            PersonUtility pu = new PersonUtility();
+
+            PeopleViewModel vm = new PeopleViewModel() { PeopleListView = pu.Read() }; //returns the list of persons we created
+
+            if (vm.PeopleListView.Count == 0 || vm.PeopleListView == null) // Fills the list with 3 names if emptu (If you delete all people in list it will fill again)
+            {
+                pu.GeneratePeople();
+            }
+            return View(vm);
         }
 
         [HttpGet]
@@ -24,10 +32,16 @@ namespace ASP.NET_Core_Empty_Project.Controllers
         }
 
         [HttpPost]
-        public IActionResult Search()
+        public IActionResult Search(int personId)
         {
             PersonUtility pu = new PersonUtility();
-            return View();
+            Person targetPerson = pu.Read(personId);
+            List<Person> people = new List<Person>();
+            if (targetPerson != null)
+            {
+                people.Add(targetPerson);
+            }
+            return PartialView("_partialPerson", people);
         }
 
     }
