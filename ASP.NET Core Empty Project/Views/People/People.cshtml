@@ -9,7 +9,7 @@
     <form asp-controller="People" asp-action="Search" method="post" role="form">
         @Html.AntiForgeryToken()
         <br />
-        <label asp-for="FilterString"> Filter Person</label>
+        <label asp-for="FilterString"> Filter Person by name or city</label>
         <br />
         <input asp-for="FilterString" required />
         <input type="submit" class="btn btn-primary" name="btnFilter" value="search" />
@@ -41,6 +41,5 @@
     <div>
         <partial name="_partialPerson" model="Model.PeopleListView" />
     </div>
-    </table>
 </div>
 
