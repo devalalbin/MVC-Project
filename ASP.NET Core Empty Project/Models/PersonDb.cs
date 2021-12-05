@@ -18,6 +18,11 @@ namespace ASP.NET_Core_Empty_Project.Models
         public string Name { get; set; }
         [Required]
         public string PhoneNr { get; set; }
+        public int CityId { get; set; }
+        [ForeignKey("CityId")]
+
+        public CityDb City { get; set; }
+
 
     }
 }

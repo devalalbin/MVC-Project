@@ -15,6 +15,14 @@
   <ItemGroup>
     <Compile Remove="Controllers\HomeController1.cs" />
     <Compile Remove="Controllers\TestingController.cs" />
+    <Compile Remove="Migrations\20211205160415_update test.cs" />
+    <Compile Remove="Migrations\20211205160415_update test.Designer.cs" />
+    <Compile Remove="Migrations\20211205162820_seeded people with city id.cs" />
+    <Compile Remove="Migrations\20211205162820_seeded people with city id.Designer.cs" />
+    <Compile Remove="Migrations\20211205163145_test.cs" />
+    <Compile Remove="Migrations\20211205163145_test.Designer.cs" />
+    <Compile Remove="Migrations\20211205164624_trying to clean up.cs" />
+    <Compile Remove="Migrations\20211205164624_trying to clean up.Designer.cs" />
     <Compile Remove="Models\SessionExtensions.cs" />
   </ItemGroup>
 

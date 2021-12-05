@@ -3,14 +3,16 @@ using ASP.NET_Core_Empty_Project.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace ASP.NET_Core_Empty_Project.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    partial class ApplicationDbContextModelSnapshot : ModelSnapshot
+    [Migration("20211205164737_Clean up")]
+    partial class Cleanup
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -37,38 +39,6 @@ namespace ASP.NET_Core_Empty_Project.Migrations
                     b.HasIndex("CountryId");
 
                     b.ToTable("Cities");
-
-                    b.HasData(
-                        new
-                        {
-                            Id = 1,
-                            CountryId = 46,
-                            Name = "Göteborg"
-                        },
-                        new
-                        {
-                            Id = 2,
-                            CountryId = 46,
-                            Name = "Stockholm"
-                        },
-                        new
-                        {
-                            Id = 3,
-                            CountryId = 46,
-                            Name = "Malmö"
-                        },
-                        new
-                        {
-                            Id = 4,
-                            CountryId = 47,
-                            Name = "Oslo"
-                        },
-                        new
-                        {
-                            Id = 5,
-                            CountryId = 358,
-                            Name = "Helsinki"
-                        });
                 });
 
             modelBuilder.Entity("ASP.NET_Core_Empty_Project.Models.CountryDb", b =>
@@ -85,23 +55,6 @@ namespace ASP.NET_Core_Empty_Project.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("Countries");
-
-                    b.HasData(
-                        new
-                        {
-                            Id = 46,
-                            Name = "Sweden"
-                        },
-                        new
-                        {
-                            Id = 47,
-                            Name = "Norway"
-                        },
-                        new
-                        {
-                            Id = 358,
-                            Name = "Finland"
-                        });
                 });
 
             modelBuilder.Entity("ASP.NET_Core_Empty_Project.Models.PersonDb", b =>
@@ -126,36 +79,6 @@ namespace ASP.NET_Core_Empty_Project.Migrations
                     b.HasIndex("CityId");
 
                     b.ToTable("People");
-
-                    b.HasData(
-                        new
-                        {
-                            SSN = "19890209-1234",
-                            CityId = 1,
-                            Name = "Albin de Val",
-                            PhoneNr = "0721222324"
-                        },
-                        new
-                        {
-                            SSN = "19700707-4321",
-                            CityId = 2,
-                            Name = "Håkan Svensson",
-                            PhoneNr = "031555666777"
-                        },
-                        new
-                        {
-                            SSN = "19801010-4125",
-                            CityId = 3,
-                            Name = "Anders Andersson",
-                            PhoneNr = "01234567"
-                        },
-                        new
-                        {
-                            SSN = "20000909-0909",
-                            CityId = 4,
-                            Name = "Max Verstappen",
-                            PhoneNr = "528582685"
-                        });
                 });
 
             modelBuilder.Entity("ASP.NET_Core_Empty_Project.Models.CityDb", b =>
