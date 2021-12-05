@@ -1,0 +1,31 @@
+﻿@model IEnumerable<PersonDb>
+@{
+    ViewData["Title"] = "Index";
+}
+
+
+
+<h1>People</h1>
+
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>SSN</th>
+            <th>Name</th>
+            <th>PhoneNr</th>
+            <th>City Id</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>@item.SSN</td>
+                <td>@item.Name</td>
+                <td>@item.PhoneNr</td>
+                <td>@item.CityId</td>
+            </tr>
+        }
+    </tbody>
+</table>

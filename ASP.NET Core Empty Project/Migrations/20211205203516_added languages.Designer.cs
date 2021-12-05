@@ -3,14 +3,16 @@ using ASP.NET_Core_Empty_Project.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace ASP.NET_Core_Empty_Project.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    partial class ApplicationDbContextModelSnapshot : ModelSnapshot
+    [Migration("20211205203516_added languages")]
+    partial class addedlanguages
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -118,23 +120,6 @@ namespace ASP.NET_Core_Empty_Project.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("Languages");
-
-                    b.HasData(
-                        new
-                        {
-                            Id = 1,
-                            Name = "Swedish"
-                        },
-                        new
-                        {
-                            Id = 2,
-                            Name = "German"
-                        },
-                        new
-                        {
-                            Id = 3,
-                            Name = "English"
-                        });
                 });
 
             modelBuilder.Entity("ASP.NET_Core_Empty_Project.Models.PersonDb", b =>
@@ -204,28 +189,6 @@ namespace ASP.NET_Core_Empty_Project.Migrations
                     b.HasIndex("LanguageId");
 
                     b.ToTable("PersonLanguage");
-
-                    b.HasData(
-                        new
-                        {
-                            PersonId = "19890209-1234",
-                            LanguageId = 1
-                        },
-                        new
-                        {
-                            PersonId = "20000909-0909",
-                            LanguageId = 1
-                        },
-                        new
-                        {
-                            PersonId = "19890209-1234",
-                            LanguageId = 2
-                        },
-                        new
-                        {
-                            PersonId = "19890209-1234",
-                            LanguageId = 3
-                        });
                 });
 
             modelBuilder.Entity("ASP.NET_Core_Empty_Project.Models.CityDb", b =>

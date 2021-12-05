@@ -1,0 +1,26 @@
+﻿@model IEnumerable<PersonLanguage>
+@{
+    ViewData["Title"] = "Index";
+}
+
+
+<h1>Languages</h1>
+
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>Person Id</th>
+            <th>Language Id</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>@item.PersonId</td>
+                <td>@item.LanguageId</td>
+            </tr>
+        }
+    </tbody>
+</table>

@@ -23,6 +23,7 @@ namespace ASP.NET_Core_Empty_Project.Models
 
         public CityDb City { get; set; }
 
+        public ICollection<PersonLanguage> PersonLanguage { get; set; }
 
     }
 }

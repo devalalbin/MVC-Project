@@ -17,6 +17,8 @@ namespace ASP.NET_Core_Empty_Project.Data
 		public DbSet<PersonDb> People { get; set; }
 		public DbSet<CityDb> Cities { get; set; }
 		public DbSet<CountryDb> Countries { get; set; }
+		public DbSet<LanguageDb> Languages { get; set; }
+		public DbSet<PersonLanguage> PersonLanguage { get; set; }
 		protected override void OnModelCreating(ModelBuilder modelBuilder)
 		{
 			
@@ -29,6 +31,19 @@ namespace ASP.NET_Core_Empty_Project.Data
 				 .HasOne(pe => pe.City)
 				 .WithMany(ci => ci.Persons)
 				 .HasForeignKey(pe => pe.CityId);
+
+
+			modelBuilder.Entity<PersonLanguage>().HasKey(pl => new { pl.PersonId, pl.LanguageId });
+
+            modelBuilder.Entity<PersonLanguage>()
+                .HasOne(pl => pl.Person)
+                .WithMany(p => p.PersonLanguage)
+                .HasForeignKey(pl => pl.PersonId);
+
+            modelBuilder.Entity<PersonLanguage>()
+                .HasOne(pl => pl.Language)
+                .WithMany(l => l.PersonLanguage)
+                .HasForeignKey(pl => pl.LanguageId);
 
 
 			modelBuilder.Entity<CountryDb>().HasData(new CountryDb { Id = 46, Name = "Sweden",});
@@ -46,7 +61,17 @@ namespace ASP.NET_Core_Empty_Project.Data
 			modelBuilder.Entity<PersonDb>().HasData(new PersonDb { SSN = "19890209-1234", Name = "Albin de Val", PhoneNr = "0721222324", CityId = 1});
 			modelBuilder.Entity<PersonDb>().HasData(new PersonDb { SSN = "19700707-4321", Name = "Håkan Svensson", PhoneNr = "031555666777",CityId = 2 });
 			modelBuilder.Entity<PersonDb>().HasData(new PersonDb { SSN = "19801010-4125", Name = "Anders Andersson", PhoneNr = "01234567", CityId = 3 });
-			modelBuilder.Entity<PersonDb>().HasData(new PersonDb { SSN = "20000909-0909", Name = "Max Verstappen", PhoneNr = "528582685", CityId = 4 }); 
+			modelBuilder.Entity<PersonDb>().HasData(new PersonDb { SSN = "20000909-0909", Name = "Max Verstappen", PhoneNr = "528582685", CityId = 4 });
+
+
+			modelBuilder.Entity<LanguageDb>().HasData(new LanguageDb { Name = "Swedish", Id = 1 });
+			modelBuilder.Entity<LanguageDb>().HasData(new LanguageDb { Name = "German", Id = 2 });
+			modelBuilder.Entity<LanguageDb>().HasData(new LanguageDb { Name = "English", Id = 3 });
+
+			modelBuilder.Entity<PersonLanguage>().HasData(new PersonLanguage { LanguageId = 1, PersonId = "19890209-1234" });
+			modelBuilder.Entity<PersonLanguage>().HasData(new PersonLanguage { LanguageId = 1, PersonId = "20000909-0909" });
+			modelBuilder.Entity<PersonLanguage>().HasData(new PersonLanguage { LanguageId = 2, PersonId = "19890209-1234" });
+			modelBuilder.Entity<PersonLanguage>().HasData(new PersonLanguage { LanguageId = 3, PersonId = "19890209-1234" });
 		}
 	}
 }
