@@ -21,7 +21,12 @@ namespace ASP.NET_Core_Empty_Project.Models
 
         [DataType(DataType.Text)]
         [Required(ErrorMessage = "Please enter a a city name"),  MinLength(3)]
-        [Display(Name = "City Name")]
-        public string City { get; set; }
+        [Display(Name = "City Id")]
+        public int CityId { get; set; } 
+       
+        [DataType(DataType.Text)]
+        [Required(ErrorMessage = "Please enter a social security number"), MinLength(13)]
+        [Display(Name = "SSN")]
+        public string SSN { get; set; }
     }
 }

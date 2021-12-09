@@ -30,7 +30,7 @@ namespace ASP.NET_Core_Empty_Project.Controllers
             if (ModelState.IsValid)
             {
                 vm.PeopleListView = pu.Read();
-                pu.Create(createPerson.Name, createPerson.PhoneNr, createPerson.City); // adds a person to our list
+                pu.Create(createPerson.Name, createPerson.PhoneNr, createPerson.SSN); // adds a person to our list
                 ViewBag.Message = "Added person! ";
                 return View("People", vm);
             }

@@ -18,8 +18,41 @@ namespace ASP.NET_Core_Empty_Project.Controllers
         }
         public IActionResult Index()
         {
-            List<PersonDb> ListOfPeople = _context.People.ToList();
-            return View(ListOfPeople);
+            PeopleViewModelDb vm = new PeopleViewModelDb() { PeopleListView = _context.People.ToList() };
+            return View(vm);
         }
+        public IActionResult CreatePerson()
+        {
+            return View();
+        }
+        [HttpPost]
+        public IActionResult CreatePerson(PersonDb person)
+        {
+            if (ModelState.IsValid)
+            {
+                _context.People.Add(person);
+                _context.SaveChanges();
+                return RedirectToAction("Index");
+            }
+            return View();
+        }
+
+        [HttpPost]
+        public IActionResult DeletePerson(string ssn)
+        {
+            var person = _context.People.Find(ssn);
+            _context.Remove(person);
+            _context.SaveChanges();
+            return RedirectToAction("Index");
+        } 
+        
+        /* public IActionResult Search(string name)
+         { [HttpPost]
+             PeopleViewModelDb vm = new PeopleViewModelDb();
+
+             //Fill with a list matching our result
+             return View();
+         }*/
     }
 }
+

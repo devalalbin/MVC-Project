@@ -1,31 +1,51 @@
-﻿@model IEnumerable<PersonDb>
+﻿@model PeopleViewModelDb
 @{
     ViewData["Title"] = "Index";
 }
 
 
+<div class="container">
+    <h1>People</h1>
 
-<h1>People</h1>
+
+    <form asp-controller="PeopleDb" asp-action="DeletePerson" method="post" role="form">
+        <br />
+        <label for="ssn">SSN:</label>
+        <input type="text" name="ssn" />
+        <input type="submit" class="btn btn-primary" name="btnFilter" value="delete" />
+    </form>
 
 
-<table class="table">
-    <thead>
-        <tr>
-            <th>SSN</th>
-            <th>Name</th>
-            <th>PhoneNr</th>
-            <th>City Id</th>
-        </tr>
-    </thead>
-    <tbody>
-        @foreach (var item in Model)
-        {
+    <form asp-controller="PeopleDb" asp-action="Search" method="post" role="form">
+        <br />
+        <label for="name">Search:</label>
+        <input type="text" name="name" />
+        <input type="submit" class="btn btn-primary" name="btnFilter" value="search" />
+    </form>
+
+    <table class="table">
+        <thead>
             <tr>
-                <td>@item.SSN</td>
-                <td>@item.Name</td>
-                <td>@item.PhoneNr</td>
-                <td>@item.CityId</td>
+                <th>SSN</th>
+                <th>Name</th>
+                <th>PhoneNr</th>
+                <th>City Id</th>
             </tr>
-        }
-    </tbody>
-</table>
+        </thead>
+        <tbody>
+            @foreach (var item in Model.PeopleListView)
+            {
+                <tr>
+                    <td>@item.SSN</td>
+                    <td>@item.Name</td>
+                    <td>@item.PhoneNr</td>
+                    <td>@item.CityId</td>
+                </tr>
+            }
+        </tbody>
+    </table>
+
+    <li>
+        <a class="btn btn-primary" asp-area="" asp-controller="PeopleDb" asp-action="CreatePerson">Create a Person</a>
+    </li>
+</div>
