@@ -69,9 +69,13 @@ namespace ASP.NET_Core_Empty_Project.Data
 			modelBuilder.Entity<LanguageDb>().HasData(new LanguageDb { Name = "English", Id = 3 });
 
 			modelBuilder.Entity<PersonLanguage>().HasData(new PersonLanguage { LanguageId = 1, PersonId = "19890209-1234" });
-			modelBuilder.Entity<PersonLanguage>().HasData(new PersonLanguage { LanguageId = 1, PersonId = "20000909-0909" });
 			modelBuilder.Entity<PersonLanguage>().HasData(new PersonLanguage { LanguageId = 2, PersonId = "19890209-1234" });
 			modelBuilder.Entity<PersonLanguage>().HasData(new PersonLanguage { LanguageId = 3, PersonId = "19890209-1234" });
+			modelBuilder.Entity<PersonLanguage>().HasData(new PersonLanguage { LanguageId = 1, PersonId = "19700707-4321" });
+			modelBuilder.Entity<PersonLanguage>().HasData(new PersonLanguage { LanguageId = 2, PersonId = "19700707-4321" });
+			modelBuilder.Entity<PersonLanguage>().HasData(new PersonLanguage { LanguageId = 1, PersonId = "19801010-4125" });
+			modelBuilder.Entity<PersonLanguage>().HasData(new PersonLanguage { LanguageId = 3, PersonId = "19801010-4125" });
+			modelBuilder.Entity<PersonLanguage>().HasData(new PersonLanguage { LanguageId = 1, PersonId = "20000909-0909" });
 		}
 	}
 }

@@ -1,26 +1,54 @@
-﻿@model IEnumerable<PersonLanguage>
+﻿@model PersonLanguageViewModel
 @{
     ViewData["Title"] = "Index";
 }
 
 
-<h1>Languages</h1>
 
+<div class="container">
+    <h1>Index</h1>
 
-<table class="table">
-    <thead>
-        <tr>
-            <th>Person Id</th>
-            <th>Language Id</th>
-        </tr>
-    </thead>
-    <tbody>
-        @foreach (var item in Model)
-        {
+    <p>
+        <a class="btn btn-primary" asp-area="" asp-controller="Language" asp-action="CreateLanguage">Create Language</a>
+    </p>
+
+    <table class="table">
+        <thead>
             <tr>
-                <td>@item.PersonId</td>
-                <td>@item.LanguageId</td>
+                <th>Id</th>
+                <th>Name</th>
             </tr>
-        }
-    </tbody>
-</table>
+        </thead>
+        <tbody>
+            @foreach (var item in Model.LanguagesWithPersonsList)
+            {
+                <tr>
+                    <td>@item.Id</td>
+                    <td>@item.Name</td>
+
+                </tr>
+            }
+        </tbody>
+    </table>
+
+    <div>
+        <h2>Add Language to Person</h2>
+        <form class="form" asp-action="AddLanguageToPerson" method="post">
+            <div class="form-group">
+                <label asp-for="PersonName">Person Name</label>
+                <input asp-for="PersonName" class="form-control" />
+                <span asp-validation-for="PersonName"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="LanguageName">Language</label>
+                <select asp-for="LanguageIdString" asp-items="Model.Languages"></select>
+            </div>
+            <div>
+                <input type="submit" value="Add Language to a Person" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+
+
+</div>
+

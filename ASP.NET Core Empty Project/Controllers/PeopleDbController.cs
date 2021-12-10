@@ -44,15 +44,8 @@ namespace ASP.NET_Core_Empty_Project.Controllers
             _context.Remove(person);
             _context.SaveChanges();
             return RedirectToAction("Index");
-        } 
-        
-        /* public IActionResult Search(string name)
-         { [HttpPost]
-             PeopleViewModelDb vm = new PeopleViewModelDb();
+        }
 
-             //Fill with a list matching our result
-             return View();
-         }*/
     }
 }
 

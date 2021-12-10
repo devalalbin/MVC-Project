@@ -10,18 +10,11 @@
 
     <form asp-controller="PeopleDb" asp-action="DeletePerson" method="post" role="form">
         <br />
-        <label for="ssn">SSN:</label>
+        <label for="ssn">Enter SSN:</label>
         <input type="text" name="ssn" />
         <input type="submit" class="btn btn-primary" name="btnFilter" value="delete" />
     </form>
 
-
-    <form asp-controller="PeopleDb" asp-action="Search" method="post" role="form">
-        <br />
-        <label for="name">Search:</label>
-        <input type="text" name="name" />
-        <input type="submit" class="btn btn-primary" name="btnFilter" value="search" />
-    </form>
 
     <table class="table">
         <thead>
