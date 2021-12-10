@@ -56,7 +56,7 @@ namespace ASP.NET_Core_Empty_Project.Controllers
         [HttpPost]
         public ActionResult AddLanguageToPerson(PersonLanguageViewModel lvm)
         {
-            var person = _context.People.Where(p => p.SSN == lvm.PersonName).FirstOrDefault();
+            var person = _context.People.Where(p => p.Name == lvm.PersonName).FirstOrDefault();
             var language = _context.Languages.Where(l => l.Id == Int32.Parse(lvm.LanguageIdString)).Include(pl => pl.PersonLanguage).FirstOrDefault();
 
             if (person != null && language != null)
