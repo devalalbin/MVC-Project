@@ -68,6 +68,11 @@ namespace ASP.NET_Core_Empty_Project.Controllers
 
             return RedirectToAction(nameof(Index));
         }
+        public IActionResult Display()
+        {
+            var data = _context.PersonLanguage.ToList();
+            return View(data);
+        }
 
     }
 }
