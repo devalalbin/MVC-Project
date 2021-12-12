@@ -14,25 +14,20 @@
     <p>
         <a class="btn btn-primary" asp-area="" asp-controller="PersonLanguage" asp-action="Display">Display Languagues and Persons</a>
     </p>
-
-    <table class="table">
-        <thead>
-            <tr>
-                <th>Id</th>
-                <th>Name</th>
-            </tr>
-        </thead>
-        <tbody>
-            @foreach (var item in Model.LanguagesWithPersonsList)
-            {
-                <tr>
-                    <td>@item.Id</td>
-                    <td>@item.Name</td>
-
-                </tr>
-            }
-        </tbody>
-    </table>
+    @foreach (var item in Model.LanguagesWithPersonsList)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Name)
+            </td>
+            <td>
+                @foreach (var person in item.People)
+                {
+                    <partial name="_partialPersonLangDb" for="@person" />
+                }
+            </td>
+        </tr>
+    }
 
     <div>
         <h2>Add Language to Person</h2>

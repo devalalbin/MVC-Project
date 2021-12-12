@@ -18,7 +18,7 @@ namespace ASP.NET_Core_Empty_Project.Controllers
         {
             _context = context;
         }
-        public IActionResult Index()
+        public IActionResult Index() //creating view with our language with persons list
         {
             var languagesWithPersons = _context.Languages.Include(pl => pl.PersonLanguage)
                 .ThenInclude(p => p.Person).ToList();
