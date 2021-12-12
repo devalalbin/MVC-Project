@@ -58,14 +58,9 @@ namespace ASP.NET_Core_Empty_Project.Controllers
         {
             var person = _context.People.Where(p => p.Name == languagesVM.PersonName).FirstOrDefault();
             var language = _context.Languages.Where(l => l.Id == Int32.Parse(languagesVM.LanguageIdString)).Include(pl => pl.PersonLanguage).FirstOrDefault();
-
-            if (person != null && language != null)
-            {
-                language.PersonLanguage.Add(new PersonLanguage { PersonId = person.SSN });
-                _context.SaveChanges();
-
-            }
-
+           
+            language.PersonLanguage.Add(new PersonLanguage { PersonId = person.SSN, LanguageId = language.Id });
+            _context.SaveChanges();
             return RedirectToAction(nameof(Index));
         }
         public IActionResult Display()
