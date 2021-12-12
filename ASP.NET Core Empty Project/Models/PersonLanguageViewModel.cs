@@ -18,14 +18,7 @@ namespace ASP.NET_Core_Empty_Project.Models
         private List<SelectListItem> languages;
         public List<SelectListItem> Languages { get => languages; }
 
-        public void SelectList(List<LanguageDb> languageList)
-        {
-            List<SelectListItem> languagesSelectList = new List<SelectListItem>();
-            foreach (var language in languageList)
-            {
-                languagesSelectList.Add(new SelectListItem { Value = language.Id.ToString(), Text = language.Name });
-            }
-            languages = languagesSelectList;
-        }
+        
+        
     }
 }

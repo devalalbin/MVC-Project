@@ -24,7 +24,6 @@ namespace ASP.NET_Core_Empty_Project.Controllers
                 .ThenInclude(p => p.Person).ToList();
 
             PersonLanguageViewModel pvm = new PersonLanguageViewModel();
-            pvm.SelectList(languagesWithPersons);
             List<LanguagesPeopleList> languagesWithPersonsList = new List<LanguagesPeopleList>();
 
             foreach (var item in languagesWithPersons)
@@ -54,7 +53,7 @@ namespace ASP.NET_Core_Empty_Project.Controllers
         }
 
         [HttpPost]
-        public ActionResult AddLanguageToPerson(PersonLanguage pl)
+        public ActionResult AddLanguageToPerson(PersonLanguageViewModel languagesVM)
         {
             var person = _context.People.Where(p => p.Name == languagesVM.PersonName).FirstOrDefault();
             var language = _context.Languages.Where(l => l.Id == Int32.Parse(languagesVM.LanguageIdString)).Include(pl => pl.PersonLanguage).FirstOrDefault();
