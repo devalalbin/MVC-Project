@@ -14,11 +14,6 @@ namespace ASP.NET_Core_Empty_Project.Models
         public List<LanguagesPeopleList> LanguagesWithPersonsList { get; set; }
 
         public string LanguageIdString { get; set; }
-
-        private List<SelectListItem> languages;
-        public List<SelectListItem> Languages { get => languages; }
-
-        
-        
+   
     }
 }

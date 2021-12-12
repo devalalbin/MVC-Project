@@ -1,4 +1,6 @@
 ﻿using ASP.NET_Core_Empty_Project.Models;
+using Microsoft.AspNetCore.Identity;
+using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
@@ -7,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace ASP.NET_Core_Empty_Project.Data
 {
-    public class ApplicationDbContext : DbContext
+    public class ApplicationDbContext : IdentityDbContext<IdentityUser>
     {
         public ApplicationDbContext(DbContextOptions<ApplicationDbContext> options) : base(options)
         {
@@ -19,9 +21,10 @@ namespace ASP.NET_Core_Empty_Project.Data
 		public DbSet<CountryDb> Countries { get; set; }
 		public DbSet<LanguageDb> Languages { get; set; }
 		public DbSet<PersonLanguage> PersonLanguage { get; set; }
+		public DbSet<ApplicationUser> Users { get; set; }
 		protected override void OnModelCreating(ModelBuilder modelBuilder)
 		{
-			
+			base.OnModelCreating(modelBuilder);
 			modelBuilder.Entity<CityDb>()
 				.HasOne(city => city.Country)
 				.WithMany(country => country.Cities)

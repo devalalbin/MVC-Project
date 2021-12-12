@@ -11,9 +11,8 @@ using System.Linq;
 using Microsoft.EntityFrameworkCore;
 using System.Threading.Tasks;
 using Microsoft.Extensions.Configuration;
-
-
-
+using ASP.NET_Core_Empty_Project.Models;
+using Microsoft.AspNetCore.Identity;
 
 namespace ASP.NET_Core_Empty_Project
 {
@@ -44,7 +43,12 @@ namespace ASP.NET_Core_Empty_Project
             services.AddDbContext<ApplicationDbContext>(
                 options => options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")));
 
+            services.AddIdentity<ApplicationUser, IdentityRole>(options => options.SignIn.RequireConfirmedAccount = false).AddDefaultUI().AddDefaultUI().AddEntityFrameworkStores<ApplicationDbContext>();
+         
+
             services.AddControllersWithViews();
+
+            services.AddRazorPages();
 
         }
 
@@ -58,6 +62,9 @@ namespace ASP.NET_Core_Empty_Project
             app.UseStaticFiles();
 
             app.UseRouting();
+
+            app.UseAuthentication();
+            app.UseAuthorization();
 
             app.UseHttpsRedirection();
 
@@ -78,6 +85,7 @@ namespace ASP.NET_Core_Empty_Project
                 endpoints.MapControllerRoute(name: "guessing game", //When enterying /FeverCheck directs to the doctor
                     pattern: "GuessingGame",
                     defaults: new { controller = "GuessingGame", action = "Game" }); //Custom route
+                endpoints.MapRazorPages();
 
             });
         }
