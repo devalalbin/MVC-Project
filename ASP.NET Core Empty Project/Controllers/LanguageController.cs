@@ -36,5 +36,13 @@ namespace ASP.NET_Core_Empty_Project.Controllers
             }
             return View();
         }
+        [HttpPost]
+        public IActionResult DeleteLanguage(int id)
+        {
+            var langugage = _context.Languages.Find(id);
+            _context.Remove(langugage);
+            _context.SaveChanges();
+            return RedirectToAction("Index");
+        }
     }
 }

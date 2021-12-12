@@ -15,17 +15,17 @@ namespace ASP.NET_Core_Empty_Project.Models
 
         public string LanguageIdString { get; set; }
 
-        private List<SelectListItem> _languages;
-        public List<SelectListItem> Languages { get => _languages; }
+        private List<SelectListItem> languages;
+        public List<SelectListItem> Languages { get => languages; }
 
-        public void CreateLanguagesSelectList(List<LanguageDb> languageList)
+        public void SelectList(List<LanguageDb> languageList)
         {
             List<SelectListItem> languagesSelectList = new List<SelectListItem>();
             foreach (var language in languageList)
             {
                 languagesSelectList.Add(new SelectListItem { Value = language.Id.ToString(), Text = language.Name });
             }
-            _languages = languagesSelectList;
+            languages = languagesSelectList;
         }
     }
 }
