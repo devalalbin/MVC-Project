@@ -24,7 +24,6 @@ namespace ASP.NET_Core_Empty_Project.Controllers
                 .ThenInclude(p => p.Person).ToList();
 
             PersonLanguageViewModel pvm = new PersonLanguageViewModel();
-            pvm.SelectList(languagesWithPersons);
             List<LanguagesPeopleList> languagesWithPersonsList = new List<LanguagesPeopleList>();
 
             foreach (var item in languagesWithPersons)
