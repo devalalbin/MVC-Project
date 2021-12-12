@@ -54,13 +54,18 @@ namespace ASP.NET_Core_Empty_Project.Controllers
         }
 
         [HttpPost]
-        public ActionResult AddLanguageToPerson(PersonLanguageViewModel languagesVM)
+        public ActionResult AddLanguageToPerson(PersonLanguage pl)
         {
             var person = _context.People.Where(p => p.Name == languagesVM.PersonName).FirstOrDefault();
             var language = _context.Languages.Where(l => l.Id == Int32.Parse(languagesVM.LanguageIdString)).Include(pl => pl.PersonLanguage).FirstOrDefault();
-           
-            language.PersonLanguage.Add(new PersonLanguage { PersonId = person.SSN, LanguageId = language.Id });
-            _context.SaveChanges();
+
+            if (person != null && language != null)
+            {
+                language.PersonLanguage.Add(new PersonLanguage { PersonId = person.SSN });
+                _context.SaveChanges();
+
+            }
+
             return RedirectToAction(nameof(Index));
         }
         public IActionResult Display()
