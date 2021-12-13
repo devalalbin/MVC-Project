@@ -1,5 +1,6 @@
 ﻿using ASP.NET_Core_Empty_Project.Data;
 using ASP.NET_Core_Empty_Project.Models;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using System;
 using System.Collections.Generic;
@@ -8,6 +9,7 @@ using System.Threading.Tasks;
 
 namespace ASP.NET_Core_Empty_Project.Controllers
 {
+    [Authorize(Roles = "Admin")]
     public class CityController : Controller
     {
         private readonly ApplicationDbContext _context;
@@ -21,6 +23,7 @@ namespace ASP.NET_Core_Empty_Project.Controllers
             var listOfCitys = _context.Cities.ToList();
             return View(listOfCitys);
         }
+        [Authorize(Roles = "Admin")]
         public IActionResult CreateCountry(CityDb city)
         {
             if (ModelState.IsValid)
@@ -31,6 +34,7 @@ namespace ASP.NET_Core_Empty_Project.Controllers
             }
             return View();
         }
+        [Authorize(Roles = "Admin")]
         [HttpPost]
         public IActionResult DeleteCity(int id)
         {

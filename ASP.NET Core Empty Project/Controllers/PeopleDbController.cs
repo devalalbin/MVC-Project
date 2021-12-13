@@ -1,5 +1,6 @@
 ﻿using ASP.NET_Core_Empty_Project.Data;
 using ASP.NET_Core_Empty_Project.Models;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using System;
 using System.Collections.Generic;
@@ -8,6 +9,7 @@ using System.Threading.Tasks;
 
 namespace ASP.NET_Core_Empty_Project.Controllers
 {
+    [Authorize(Roles = "Admin, User")]
     public class PeopleDbController : Controller
     {
         private readonly ApplicationDbContext _context;
@@ -37,6 +39,7 @@ namespace ASP.NET_Core_Empty_Project.Controllers
             return View();
         }
 
+        [Authorize(Roles = "Admin")]
         [HttpPost]
         public IActionResult DeletePerson(string ssn)
         {

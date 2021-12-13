@@ -7,14 +7,17 @@
 <div class="container">
     <h1>People</h1>
 
+    @if (User.IsInRole("Admin"))
+    {
+        <p>Hello Admin! You can delete a person</p>
 
-    <form asp-controller="PeopleDb" asp-action="DeletePerson" method="post" role="form">
-        <br />
-        <label for="ssn">Enter SSN:</label>
-        <input type="text" name="ssn" />
-        <input type="submit" class="btn btn-primary" name="btnFilter" value="delete" />
-    </form>
-
+        <form asp-controller="PeopleDb" asp-action="DeletePerson" method="post" role="form">
+            <br />
+            <label for="ssn">Enter SSN:</label>
+            <input type="text" name="ssn" />
+            <input type="submit" class="btn btn-primary" name="btnFilter" value="delete" />
+        </form>
+    }
 
     <table class="table">
         <thead>
@@ -38,5 +41,6 @@
         </tbody>
     </table>
 
-        <a class="btn btn-primary" asp-area="" asp-controller="PeopleDb" asp-action="CreatePerson">Create a Person</a>
+    <a class="btn btn-primary" asp-area="" asp-controller="PeopleDb" asp-action="CreatePerson">Create a Person</a>
+    <a class="btn btn-primary" asp-area="" asp-controller="PeopleDb" asp-action="EditPerson">Edit a person</a>
 </div>

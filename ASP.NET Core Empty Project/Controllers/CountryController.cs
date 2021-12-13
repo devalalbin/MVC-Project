@@ -5,9 +5,11 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using ASP.NET_Core_Empty_Project.Models;
+using Microsoft.AspNetCore.Authorization;
 
 namespace ASP.NET_Core_Empty_Project.Controllers
 {
+    [Authorize(Roles = "Admin")]
     public class CountryController : Controller
     {
         private readonly ApplicationDbContext _context;
@@ -21,6 +23,7 @@ namespace ASP.NET_Core_Empty_Project.Controllers
             var data = _context.Countries.ToList();
             return View(data);
         }
+        [HttpPost]
         public IActionResult CreateCountry(CountryDb country)
         {
             if (ModelState.IsValid)
