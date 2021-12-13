@@ -45,8 +45,7 @@ namespace ASP.NET_Core_Empty_Project.Controllers
         [HttpPost]
         public IActionResult EditPerson(EditPersonVM vm)
         {
-            if (ModelState.IsValid)
-            {
+            
                 var person = _context.People.Find(vm.SSN);
                 if (person != null)
                 {
@@ -55,7 +54,7 @@ namespace ASP.NET_Core_Empty_Project.Controllers
                     person.PhoneNr = vm.PhoneNumber;
                 }
                 _context.SaveChanges();
-            }
+            
 
             return RedirectToAction(nameof(Index));
         }
