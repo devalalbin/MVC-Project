@@ -23,8 +23,12 @@ namespace ASP.NET_Core_Empty_Project.Controllers
             var listOfCitys = _context.Cities.ToList();
             return View(listOfCitys);
         }
-        [Authorize(Roles = "Admin")]
-        public IActionResult CreateCountry(CityDb city)
+        public IActionResult CreateCity()
+        {
+            return View();
+        }
+        [HttpPost]
+        public IActionResult CreateCity(CityDb city)
         {
             if (ModelState.IsValid)
             {
@@ -34,7 +38,6 @@ namespace ASP.NET_Core_Empty_Project.Controllers
             }
             return View();
         }
-        [Authorize(Roles = "Admin")]
         [HttpPost]
         public IActionResult DeleteCity(int id)
         {

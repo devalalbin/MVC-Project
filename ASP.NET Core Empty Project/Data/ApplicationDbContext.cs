@@ -103,8 +103,8 @@ namespace ASP.NET_Core_Empty_Project.Data
 				Id = userId,
 				Email = "admin@admin.com",
 				NormalizedEmail = "ADMIN@ADMIN.COM",
-				UserName ="Admin",
-				NormalizedUserName ="ADMIN",
+				UserName = "admin@admin.com",
+				NormalizedUserName = "ADMIN@ADMIN.COM",
 				PasswordHash = hasher.HashPassword(null,"password"),
 				FirstName = "Admin",
 				LastName = "Adminsson"

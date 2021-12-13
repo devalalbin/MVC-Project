@@ -38,6 +38,16 @@ namespace ASP.NET_Core_Empty_Project.Controllers
             }
             return View();
         }
+        public IActionResult EditPerson(PersonDb person)
+        {
+            if (ModelState.IsValid)
+            {
+                _context.People.Update(person);
+                _context.SaveChanges();
+                return RedirectToAction("Index");
+            }
+            return View();
+        }
 
         [Authorize(Roles = "Admin")]
         [HttpPost]

@@ -26,6 +26,27 @@
         <br />
         <input type="submit" value="Create person" />
         <br />
+    </form>
+
+    <form asp-controller="PeopleDb" asp-action="EditPerson" method="post">
+        <label asp-for="Name"></label>
+        <br />
+        <input asp-for="Name" />
+        <br />
+        <label asp-for="PhoneNr"></label>
+        <br />
+        <input asp-for="PhoneNr" />
+        <br />
+        <label asp-for="SSN"></label>
+        <br />
+        <input asp-for="SSN" />
+        <br />
+        <label asp-for="CityId"></label>
+        <br />
+        <input asp-for="CityId" />
+        <br />
+        <input type="submit" value="Create person" />
+        <br />
 
 
 

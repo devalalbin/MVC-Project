@@ -4,14 +4,16 @@ using ASP.NET_Core_Empty_Project.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace ASP.NET_Core_Empty_Project.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    partial class ApplicationDbContextModelSnapshot : ModelSnapshot
+    [Migration("20211213172303_seeded admin again")]
+    partial class seededadminagain
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -278,15 +280,15 @@ namespace ASP.NET_Core_Empty_Project.Migrations
                     b.HasData(
                         new
                         {
-                            Id = "1be1ea04-a745-445d-9471-3f3ab3873133",
-                            ConcurrencyStamp = "595ab74b-8b7f-401f-b4f2-465098f9d7eb",
+                            Id = "a182d4fd-db9b-4a2f-8f92-17789bc37650",
+                            ConcurrencyStamp = "78c639f9-4bcd-46d9-9416-307574dc1114",
                             Name = "Admin",
                             NormalizedName = "ADMIN"
                         },
                         new
                         {
-                            Id = "832f2200-9282-43ea-a9ea-508bdb387570",
-                            ConcurrencyStamp = "e58c2b79-e749-4363-8bba-a6eb4b877750",
+                            Id = "3de09564-55d0-4aa9-84e2-5a59e03ff47d",
+                            ConcurrencyStamp = "58fc3812-fd5a-4a71-a7c2-48b709f8dfd3",
                             Name = "User",
                             NormalizedName = "USER"
                         });
@@ -450,8 +452,8 @@ namespace ASP.NET_Core_Empty_Project.Migrations
                     b.HasData(
                         new
                         {
-                            UserId = "aa2e6582-387f-4001-9afb-86b59ecf7672",
-                            RoleId = "1be1ea04-a745-445d-9471-3f3ab3873133"
+                            UserId = "dd78b599-8a86-40ed-b885-8f7970eb96eb",
+                            RoleId = "a182d4fd-db9b-4a2f-8f92-17789bc37650"
                         });
                 });
 
@@ -494,17 +496,17 @@ namespace ASP.NET_Core_Empty_Project.Migrations
                     b.HasData(
                         new
                         {
-                            Id = "aa2e6582-387f-4001-9afb-86b59ecf7672",
+                            Id = "dd78b599-8a86-40ed-b885-8f7970eb96eb",
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "21e4383c-c424-479d-8dfb-1eb036514418",
+                            ConcurrencyStamp = "9de2c05c-4ad1-4e09-ae1b-a58f407e68e6",
                             Email = "admin@admin.com",
                             EmailConfirmed = false,
                             LockoutEnabled = false,
                             NormalizedEmail = "ADMIN@ADMIN.COM",
                             NormalizedUserName = "ADMIN@ADMIN.COM",
-                            PasswordHash = "AQAAAAEAACcQAAAAEF2Z7/HtIagosyeIQp+LIHYRkwDjsWcl2Lj4iM0xUm4XwNrxhh8dM7m52pe4ggaSWA==",
+                            PasswordHash = "AQAAAAEAACcQAAAAEN89agVaf1yNzwhWjNymCUVzt8hYf0IFr82n+54h/6pmMcNwQo7891KUGmO3zJ83Kw==",
                             PhoneNumberConfirmed = false,
-                            SecurityStamp = "4323c142-6735-4948-90a1-fa8b8b4b01ed",
+                            SecurityStamp = "d7592a01-1368-417c-8b9b-fbd69ef099fa",
                             TwoFactorEnabled = false,
                             UserName = "admin@admin.com",
                             BirthDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),

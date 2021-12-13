@@ -1,0 +1,33 @@
+﻿@model EditCountryVM
+@{
+    ViewData["Title"] = "EditCountry";
+}
+
+<h2>EditCountry</h2>
+
+
+<div class="container">
+    <h2>Edit country</h2>
+
+    <hr /><form asp-controller="Country" asp-action="EditCountry" method="post" class="form p-5 border border-secondary">
+    <h4 class="form-text">Edit Country</h4>
+    <div class="form-group">
+        <label asp-for="Id" class="control-label"></label>
+        <input asp-for="Id" class="form-control" />
+        <span asp-validation-for="Id" class="text-danger"></span>
+    </div>
+            <div class="form-group">
+                <label asp-for="Name"></label>
+                <input class="form-control" asp-for="Name" />
+                <span class="alert-danger" asp-validation-for="Name"></span>
+            </div>
+            <button class="form-control btn btn-primary" type="submit"> Update Country </button>
+</form>
+    
+
+    <div>
+        <a asp-action="Index">Back country List</a>
+    </div>
+
+
+</div>

@@ -23,6 +23,14 @@ namespace ASP.NET_Core_Empty_Project.Controllers
             var data = _context.Countries.ToList();
             return View(data);
         }
+        public IActionResult CreateCountry()
+        {
+            return View();
+        }
+        public IActionResult EditCountry()
+        {
+            return View();
+        }
         [HttpPost]
         public IActionResult CreateCountry(CountryDb country)
         {
@@ -43,5 +51,20 @@ namespace ASP.NET_Core_Empty_Project.Controllers
             return RedirectToAction("Index");
         }
 
+        [HttpPost]
+        public IActionResult EditCountry(EditCountryVM vm)
+        {
+            if (ModelState.IsValid)
+            {
+                var country = _context.Countries.Find(vm.Id);
+                if (country != null)
+                {
+                    country.Name = vm.Name;
+                }
+                _context.SaveChanges();
+            }
+
+            return RedirectToAction(nameof(Index));
+        }
     }
 }
