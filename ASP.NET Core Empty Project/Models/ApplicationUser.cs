@@ -13,5 +13,7 @@ namespace ASP.NET_Core_Empty_Project.Models
         public string FirstName { get; set; }
         [Required]
         public string LastName { get; set; }
+        [Required]
+        public DateTime BirthDate { get; set; }
     }
 }

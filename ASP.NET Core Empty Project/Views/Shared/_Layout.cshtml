@@ -16,35 +16,12 @@
                     <li class="nav-item">
                         <img src="~/images/mvc logo.png" class="navbar-logo" asp-area="" asp-controller="Home" asp-action="Index" />
                     </li>
-                    <li class="nav-item">
-                        <a class="nav-link" asp-area="" asp-controller="Home" asp-action="Index">Home </a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" asp-area="" asp-controller="Info" asp-action="About">About </a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" asp-area="" asp-controller="Info" asp-action="Contact">Contact</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" asp-area="" asp-controller="Info" asp-action="Project">Projects</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" asp-area="" asp-controller="Doctor" asp-action="FeverCheck">Fever</a>
-                    </li>
-                    <li>
-                        <a class="nav-link" asp-area="" asp-controller="GuessingGame" asp-action="Game">Guessing game</a>
-                    </li>
-                    <li>
-                        <a class="nav-link" asp-area="" asp-controller="People" asp-action="People">People</a>
-                    </li>
-                    <li>
-                        <a class="nav-link" asp-area="" asp-controller="Ajax" asp-action="Index">Ajax</a>
-                    </li>
+                    
                     <li>
                         <a class="nav-link" asp-area="" asp-controller="Db" asp-action="Index">Database</a>
                     </li>
                     <li>
-                        <partial name="_LoginPatial"/>
+                        <partial name="_LoginPartial" class="nav-link" />
                     </li>
 
                     </li>
@@ -60,6 +37,7 @@
     <script src="~/lib/jquery/dist/jquery.min.js"></script>
     <script src="~/js/site.js" asp-append-version="true"></script>
     <script src="~/js/PersonScript.js"></script>
+    @RenderSection("Scripts", required: false)
 </body>
 <footer>@DateTime.Now.ToShortDateString() Albin de Val</footer>
 </html>
