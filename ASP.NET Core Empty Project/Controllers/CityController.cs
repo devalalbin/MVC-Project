@@ -27,6 +27,10 @@ namespace ASP.NET_Core_Empty_Project.Controllers
         {
             return View();
         }
+        public IActionResult EditCity()
+        {
+            return View();
+        }
         [HttpPost]
         public IActionResult CreateCity(CityDb city)
         {
@@ -45,6 +49,22 @@ namespace ASP.NET_Core_Empty_Project.Controllers
             _context.Remove(city);
             _context.SaveChanges();
             return RedirectToAction("Index");
+        }
+        [HttpPost]
+        public IActionResult EditCity(EditCityVm vm)
+        {
+            if (ModelState.IsValid)
+            {
+                var city = _context.Cities.Find(vm.Id);
+                if (city != null)
+                {
+                    city.Name = vm.Name;
+                    city.CountryId = vm.CountryId;
+                }
+                _context.SaveChanges();
+            }
+
+            return RedirectToAction(nameof(Index));
         }
     }
 }

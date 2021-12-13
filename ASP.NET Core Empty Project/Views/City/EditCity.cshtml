@@ -1,0 +1,39 @@
+﻿@model EditCityVm
+@{
+    ViewData["Title"] = "EditCity";
+}
+
+<h2>Edit City</h2>
+
+
+<div class="container">
+    <h2>Edit city</h2>
+
+    <hr /><form asp-controller="city" asp-action="EditCity" method="post" class="form p-5 border border-secondary">
+    <h4 class="form-text">Edit City</h4>
+    <div class="form-group">
+        <label asp-for="Id" class="control-label"></label>
+        <input asp-for="Id" class="form-control" />
+        <span asp-validation-for="Id" class="text-danger"></span>
+    </div>
+    <div class="form-group">
+        <label asp-for="Name"></label>
+        <input class="form-control" asp-for="Name" />
+        <span class="alert-danger" asp-validation-for="Name"></span>
+    </div>
+    <div class="form-group">
+        <label asp-for="CountryId"></label>
+        <input class="form-control" asp-for="CountryId" />
+        <span class="alert-danger" asp-validation-for="CountryId"></span>
+    </div>
+    <button class="form-control btn btn-primary" type="submit"> Update City </button>
+    
+</form>
+
+
+    <div>
+        <a asp-action="Index">Back city List</a>
+    </div>
+
+
+</div>

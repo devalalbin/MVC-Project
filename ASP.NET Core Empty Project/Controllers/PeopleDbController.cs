@@ -27,6 +27,10 @@ namespace ASP.NET_Core_Empty_Project.Controllers
         {
             return View();
         }
+        public IActionResult EditPerson()
+        {
+            return View();
+        }
         [HttpPost]
         public IActionResult CreatePerson(PersonDb person)
         {
@@ -38,15 +42,22 @@ namespace ASP.NET_Core_Empty_Project.Controllers
             }
             return View();
         }
-        public IActionResult EditPerson(PersonDb person)
+        [HttpPost]
+        public IActionResult EditPerson(EditPersonVM vm)
         {
             if (ModelState.IsValid)
             {
-                _context.People.Update(person);
+                var person = _context.People.Find(vm.SSN);
+                if (person != null)
+                {
+                    person.Name = vm.Name;
+                    person.CityId = vm.CityId;
+                    person.PhoneNr = vm.PhoneNumber;
+                }
                 _context.SaveChanges();
-                return RedirectToAction("Index");
             }
-            return View();
+
+            return RedirectToAction(nameof(Index));
         }
 
         [Authorize(Roles = "Admin")]
