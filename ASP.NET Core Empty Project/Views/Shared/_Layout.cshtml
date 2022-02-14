@@ -18,7 +18,7 @@
                     </li>
 
                     <li>
-                        <a class="btn btn-primary" asp-area="" asp-controller="PeopleDb" asp-action="Index">People</a>
+                        <a class="btn btn-primary btn-danger" asp-area="" asp-controller="PeopleDb" asp-action="Index">People</a>
                     </li>
                     @if (User.IsInRole("Admin"))
                     {
@@ -30,13 +30,13 @@
                         </li>
                     }
                     <li>
-                        <a class="btn btn-primary" asp-area="" asp-controller="Language" asp-action="Index">Languages</a>
+                        <a class="btn btn-primary btn-danger" asp-area="" asp-controller="Language" asp-action="Index">Languages</a>
                     </li>
                     <li>
-                        <a class="btn btn-primary" asp-area="" asp-controller="PersonLanguage" asp-action="Index">person & languages</a>
+                        <a class="btn btn-primary btn-danger" asp-area="" asp-controller="PersonLanguage" asp-action="Index">person & languages</a>
                     </li>
                     <li>
-                        <a class="btn btn-primary" asp-area="" asp-controller="React" asp-action="Index">React</a>
+                        <a class="btn btn-primary" asp-area="" asp-controller="React" asp-action="Index">React</a> 
                     </li>
                     <li>
                         <partial name="_LoginPartial" class="nav-link" />

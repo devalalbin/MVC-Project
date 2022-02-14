@@ -1,9 +1,15 @@
 ﻿import ReactDetails from "./ReactDetails.jsx";
+import ReactTable from './ReactTable.jsx';
 
 function App() {
 
     const [people, setPeople] = React.useState([]);
+    const [details, setDetails] = React.useState([]);
     const [city, setCitys] = React.useState([]);
+
+    const showPersonDetails = (person) => {
+        setDetails({ ssn: person.ssn, name: person.name, phoneNr: person.phoneNr, cityName: person.cityName });
+    }
     
   
     const getPeople = () => {
@@ -29,26 +35,14 @@ function App() {
         getPeople()
     }, [])
 
-
-   
     return (
         <div className="container">
-            <ReactDetails />
-            <h3 className="p-3 text-center">React - Display a list of People</h3>
-            <table className="table table-striped table-bordered">
-                <thead>
-                    <tr>
-                        <th>Name</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    {people && people.map(people =>
-                        <tr key={people.ssn}>
-                            <td>{people.name}</td>
-                        </tr>
-                    )}
-                </tbody>
-            </table>
+            <h3 className="p-3 text-center">React</h3>
+            <ReactTable people={people} showPersonDetails={showPersonDetails} />
+            <div>
+                <p>Person details</p>
+                <ReactDetails details={details}  />
+            </div>
         </div>
 
     )
