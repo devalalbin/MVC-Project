@@ -14,6 +14,10 @@ namespace ASP.NET_Core_Empty_Project.Models
 
         public string CityName { get; set; }
         public List<ReactLanguageVM> Language { get; set; }
+        public ReactPeopleVM()
+        {
+
+        }
 
         public ReactPeopleVM(string ssn, string name, string phoneNr, string cityName, List<ReactLanguageVM> language)
         {

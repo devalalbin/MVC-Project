@@ -10,21 +10,26 @@
     )
 
 
-    function DeletePerson(id) {
-        fetch("/React/DeletePerson",
+    function handleSubmit(e) {
+        e.preventDefault();
+        var pers = person.ssn;
+        console.log(person);
+
+        fetch('React/DeletePerson',
             {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
-                body: JSON.stringify({ id: id })
+                body: JSON.stringify({  pers })
             })
             .then(response => {
                 console.log('Response:', response);
-                console.log('Response:', id);
+                console.log('Response:', pers);
             });
     }
 
     return (
         <div>
+            
             < table className="table table-striped table-bordered" >
                 <thead>
                     <tr>
@@ -40,15 +45,15 @@
                         <td >{person.ssn}</td>
                         <td >{person.phoneNr}</td>
                         <td >{person.cityName}</td>
-                        <td><button className="btn btn-danger" onClick={DeletePerson(person.ssn)}>Delete user</button></td>
                     </tr>
                 </tbody>
             </table >
-            </div>
+            <form onSubmit={handleSubmit}>
+                <button type="submit">Submit</button>
+            </form>
+        </div>
 
     )
 }
 
 export default ReactDetails
-
-  

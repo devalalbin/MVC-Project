@@ -19,26 +19,11 @@ namespace ASP.NET_Core_Empty_Project.Controllers
             _context = context;
         }
 
-        [HttpGet]
-        public IActionResult GetPeopleList2() //try to expand with cities and languages
-        {
-            PeopleViewModelDb vm = new PeopleViewModelDb() { PeopleListView = _context.People.ToList() };
-            return Json(vm.PeopleListView);
-        }
         public IActionResult Index()
         {
             return View();
         }
-
-        [HttpPost]
-        public IActionResult DeletePerson(int id)
-        {
-            PersonUtility pu = new PersonUtility();
-            Person targetPerson = pu.Read(id);
-            pu.Delete(targetPerson);
-            return Ok();
-        }
-
+               
         public List<ReactCityVM> GetCitysList() //list of citys
         {
             var citiesList = _context.Cities.ToList();
@@ -71,16 +56,28 @@ namespace ASP.NET_Core_Empty_Project.Controllers
         }
 
 
-
         [HttpGet]
         public IActionResult GetPeopleList() 
         {
             ReactVM reactVM = new ReactVM();
             reactVM.ReactPeople = GetPersonWithLanguage();
 
-            reactVM.ReactCitys = GetCitysList();
+            reactVM.ReactCities = GetCitysList();
 
             return Json(reactVM);
         }
+    
+        [HttpPost]
+        public IActionResult DeletePerson([FromBody] string id)
+        {
+            var person = _context.People.Find("1239864763271");
+            if (person == null)
+            {
+                return NotFound();
+            }
+            _context.Remove(person);
+            _context.SaveChanges();
+            return Ok();
+        } 
     }
 }
