@@ -68,14 +68,14 @@ namespace ASP.NET_Core_Empty_Project.Controllers
         }
     
         [HttpPost]
-        public IActionResult DeletePerson([FromBody] string id)
+        public IActionResult DeletePerson([FromBody] PersonDb person)
         {
-            var person = _context.People.Find("1239864763271");
+            var pers = _context.People.Find(person.SSN);
             if (person == null)
             {
                 return NotFound();
             }
-            _context.Remove(person);
+            _context.Remove(pers);
             _context.SaveChanges();
             return Ok();
         } 

@@ -9,21 +9,20 @@
         [props]
     )
 
-
     function handleSubmit(e) {
-        e.preventDefault();
+        //e.preventDefault();
         var pers = person.ssn;
-        console.log(person);
+        //console.log(person);
 
         fetch('React/DeletePerson',
             {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
-                body: JSON.stringify({  pers })
+                body: JSON.stringify({ sSN: pers })
             })
             .then(response => {
                 console.log('Response:', response);
-                console.log('Response:', pers);
+                //console.log('Response:', pers);
             });
     }
 
@@ -49,7 +48,7 @@
                 </tbody>
             </table >
             <form onSubmit={handleSubmit}>
-                <button type="submit">Submit</button>
+                <button type="submit">Delete Person</button>
             </form>
         </div>
 
