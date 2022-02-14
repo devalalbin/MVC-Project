@@ -14,6 +14,7 @@ namespace ASP.NET_Core_Empty_Project.Models
         {
             PeopleListView = new List<PersonDb>();
         }
-    }
+       
 
+    }
 }

@@ -13,6 +13,10 @@ using System.Threading.Tasks;
 using Microsoft.Extensions.Configuration;
 using ASP.NET_Core_Empty_Project.Models;
 using Microsoft.AspNetCore.Identity;
+using JavaScriptEngineSwitcher.V8;
+using JavaScriptEngineSwitcher.Extensions.MsDependencyInjection;
+using React.AspNet;
+
 
 namespace ASP.NET_Core_Empty_Project
 {
@@ -44,7 +48,10 @@ namespace ASP.NET_Core_Empty_Project
                 options => options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")));
 
             services.AddIdentity<ApplicationUser, IdentityRole>(options => options.SignIn.RequireConfirmedAccount = false).AddDefaultUI().AddDefaultUI().AddEntityFrameworkStores<ApplicationDbContext>().AddDefaultTokenProviders();
-         
+
+            services.AddSingleton<IHttpContextAccessor, HttpContextAccessor>();
+            services.AddReact();
+            services.AddJsEngineSwitcher(options => options.DefaultEngineName = V8JsEngine.EngineName).AddV8();
 
             services.AddControllersWithViews();
 
@@ -59,6 +66,10 @@ namespace ASP.NET_Core_Empty_Project
             {
                 app.UseDeveloperExceptionPage();
             }
+            app.UseReact(config =>
+            {
+                //config.AddScript("file");
+            });
             app.UseStaticFiles();
 
             app.UseRouting();
@@ -79,10 +90,10 @@ namespace ASP.NET_Core_Empty_Project
                 endpoints.MapControllerRoute(name: "info",
                     pattern: "About",
                     defaults: new { controller = "Info", action = "About" }); //Custom route
-                endpoints.MapControllerRoute(name: "doctor", //When enterying /FeverCheck directs to the doctor
+                endpoints.MapControllerRoute(name: "doctor", //When enterying 
                     pattern: "FeverCheck",
-                    defaults: new { controller = "Doctor", action = "FeverCheck" }); //Custom route
-                endpoints.MapControllerRoute(name: "guessing game", //When enterying /FeverCheck directs to the doctor
+                    defaults: new { controller = "Doctor", action = "FeverCheck" }); //Custom route //When enterying /FeverCheck directs to the doctor
+                endpoints.MapControllerRoute(name: "guessing game", 
                     pattern: "GuessingGame",
                     defaults: new { controller = "GuessingGame", action = "Game" }); //Custom route
                 endpoints.MapRazorPages();
