@@ -13,6 +13,7 @@ namespace ASP.NET_Core_Empty_Project.Models
         public string PhoneNr { get; set; }
 
         public string CityName { get; set; }
+        public int CityId { get; set; }
         public List<ReactLanguageVM> Language { get; set; }
         public ReactPeopleVM()
         {

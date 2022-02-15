@@ -26,7 +26,7 @@
         <table className="table table-striped table-bordered">
             <thead>
                 <tr>
-                    <th className="btn" onClick={() => { SortPeople() }}>Name (click to sort)</th>
+                    <th className="btn" onClick={() => { SortPeople() }}>Name</th>
                     <th>See details</th>
                 </tr>
             </thead>
@@ -42,6 +42,7 @@
                 ) }
             </tbody>
         </table>
+
     )
 }
 

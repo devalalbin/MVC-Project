@@ -68,16 +68,31 @@ namespace ASP.NET_Core_Empty_Project.Controllers
         }
     
         [HttpPost]
-        public IActionResult DeletePerson([FromBody] PersonDb person)
+        public IActionResult DeletePerson([FromBody] ReactPeopleVM delPerson)
         {
-            var pers = _context.People.Find(person.SSN);
-            if (person == null)
+            var pers = _context.People.Find(delPerson.SSN);
+            if (delPerson == null)
             {
                 return NotFound();
             }
             _context.Remove(pers);
             _context.SaveChanges();
             return Ok();
-        } 
+        }
+
+        [HttpPost]
+        public IActionResult CreatePerson([FromBody] ReactPeopleVM person)
+        {
+            if (ModelState.IsValid)
+            {
+                PersonDb pers = new PersonDb { Name = person.Name, SSN = person.SSN, PhoneNr = person.PhoneNr, CityId = person.CityId };
+
+                _context.People.Add(pers);
+                _context.SaveChanges();
+                return Ok();
+            }
+            return BadRequest();
+
+        }
     }
 }

@@ -65,6 +65,9 @@ namespace ASP.NET_Core_Empty_Project.Data
 			modelBuilder.Entity<PersonDb>().HasData(new PersonDb { SSN = "19700707-4321", Name = "Håkan Svensson", PhoneNr = "031555666777",CityId = 2 });
 			modelBuilder.Entity<PersonDb>().HasData(new PersonDb { SSN = "19801010-4125", Name = "Anders Andersson", PhoneNr = "01234567", CityId = 3 });
 			modelBuilder.Entity<PersonDb>().HasData(new PersonDb { SSN = "20000909-0909", Name = "Max Verstappen", PhoneNr = "528582685", CityId = 4 });
+			modelBuilder.Entity<PersonDb>().HasData(new PersonDb { SSN = "19894444-1234", Name = "Valtteri Bottas", PhoneNr = "21461284814", CityId = 5, });
+			modelBuilder.Entity<PersonDb>().HasData(new PersonDb { SSN = "19895555-1234", Name = "Lars Larsson", PhoneNr = "41824361284", CityId = 2, });
+		
 
 
 			modelBuilder.Entity<LanguageDb>().HasData(new LanguageDb { Name = "Swedish", Id = 1 });

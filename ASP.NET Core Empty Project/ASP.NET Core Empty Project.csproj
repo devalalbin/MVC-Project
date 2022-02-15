@@ -25,6 +25,8 @@
     <Compile Remove="Migrations\20211205164624_trying to clean up.Designer.cs" />
     <Compile Remove="Migrations\20211212211614_updated user.cs" />
     <Compile Remove="Migrations\20211212211614_updated user.Designer.cs" />
+    <Compile Remove="Migrations\20220215072835_seed.cs" />
+    <Compile Remove="Migrations\20220215072835_seed.Designer.cs" />
     <Compile Remove="Models\SessionExtensions.cs" />
   </ItemGroup>
 

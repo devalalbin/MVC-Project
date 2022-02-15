@@ -12,8 +12,8 @@
     function handleSubmit(e) {
         //e.preventDefault();
         var pers = person.ssn;
-        //console.log(person);
-
+        console.log(person);
+        //Delete person
         fetch('React/DeletePerson',
             {
                 method: 'POST',
@@ -22,7 +22,8 @@
             })
             .then(response => {
                 console.log('Response:', response);
-                //console.log('Response:', pers);
+                console.log('Response:', "Deleting ", pers);
+                window.location.reload(false);
             });
     }
 
@@ -44,6 +45,7 @@
                         <td >{person.ssn}</td>
                         <td >{person.phoneNr}</td>
                         <td >{person.cityName}</td>
+                        
                     </tr>
                 </tbody>
             </table >
