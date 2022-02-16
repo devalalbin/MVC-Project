@@ -3,7 +3,7 @@
     const [Name, setName] = React.useState("");
     const [PhoneNr, setPhoneNr] = React.useState("");
     const [Id, setId] = React.useState("");
-    const [CityId, setCity] = React.useState("");
+    const [CityId, setCity] = React.useState("1");
 
     function handleSubmit(e) {
         e.preventDefault();
@@ -14,9 +14,8 @@
             Id: Id,
             City: CityId 
         };
-        console.log(data.City);
-
-        console.log(data);
+        //console.log(data.City);
+        //console.log(data);
         //alert(data.City);
 
         fetch('React/CreatePerson',
