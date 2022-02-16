@@ -85,7 +85,7 @@ namespace ASP.NET_Core_Empty_Project.Controllers
         {
             if (ModelState.IsValid)
             {
-                PersonDb pers = new PersonDb { Name = person.Name, SSN = person.SSN, PhoneNr = person.PhoneNr, CityId = person.CityId };
+                PersonDb pers = new PersonDb { Name = person.Name, SSN = person.SSN, PhoneNr = person.PhoneNr, CityId = Int32.Parse(person.CityId) };
 
                 _context.People.Add(pers);
                 _context.SaveChanges();

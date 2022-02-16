@@ -12,18 +12,19 @@
             Name: Name,
             PhoneNr: PhoneNr,
             Id: Id,
-            City: CityId
+            City: CityId 
         };
         console.log(data.City);
-        //var temp = data.City;
-        //console.log(temp);
+
+        console.log(data);
+        //alert(data.City);
 
         fetch('React/CreatePerson',
             {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify({
-                    Name: data.Name, SSN: data.Id, PhoneNr: data.PhoneNr, cityId: 1 //<--- when trying variable in cityId the CreaptePerson gets a value of null, hardcoding for now
+                    Name: data.Name, SSN: data.Id, PhoneNr: data.PhoneNr, cityId: data.City
                 })
             })
             .then(response => {
@@ -56,13 +57,13 @@
                         id="id" placeholder="Enter SSN" />
                 </div>
             </div>
-
+            
             <div className="form-row">
                 <label>Choose city</label>
-                <select onChange={(e) => setCity(e.target.value)} name="inputCity" id="inputCity"
+                <select onChange={(e) => setCity(e.target.value)} 
                     className="form-select">
                     {props.cities.map(city => (
-                        <option key={city.id} value={city.id} >{city.name}</option>
+                        <option key={city.id} value={city.id}>{city.name}</option>
                 ))}
                 </select>
                 <button type="submit" className="btn">Add Person</button>
