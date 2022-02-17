@@ -7,6 +7,7 @@ function App() {
     const [people, setPeople] = React.useState([]);
     const [details, setDetails] = React.useState([]);
     const [cities, setCities] = React.useState([]);
+
     const showPersonDetails = (person) => {
         setDetails({
             ssn: person.ssn,
@@ -19,6 +20,7 @@ function App() {
     React.useEffect(() => {
         getPeople()
     }, [])
+
 
     const getPeople = () => {
         fetch('React/GetPeopleList'
@@ -37,6 +39,7 @@ function App() {
                 setCities(myJson.reactCities)
             });
     }
+
     //console.log(cities);
     //console.log(people);
     return (
@@ -48,7 +51,7 @@ function App() {
             <ReactTable people={people} showPersonDetails={showPersonDetails} />
             <div>
                 <p>Person details</p>
-                <ReactDetails details={details}  />
+                <ReactDetails details={details} people={people} />
             </div>
         </div>
 

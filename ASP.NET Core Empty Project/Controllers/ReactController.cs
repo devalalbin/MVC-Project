@@ -71,7 +71,7 @@ namespace ASP.NET_Core_Empty_Project.Controllers
         public IActionResult DeletePerson([FromBody] ReactPeopleVM delPerson)
         {
             var pers = _context.People.Find(delPerson.SSN);
-            if (delPerson == null)
+            if (delPerson.SSN == null)
             {
                 return NotFound();
             }

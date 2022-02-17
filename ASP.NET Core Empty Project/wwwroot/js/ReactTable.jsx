@@ -6,6 +6,7 @@
         setPeople(props.people)
     }, [props])
 
+
     const SortPeople = () => {
         if (sortOrder === "asc") {
             const sortAsc = [...people].sort((a, b) =>
@@ -21,6 +22,7 @@
             setPeople(sortDsc);
         }
     }
+
 
     return (
         <table className="table table-striped table-bordered">

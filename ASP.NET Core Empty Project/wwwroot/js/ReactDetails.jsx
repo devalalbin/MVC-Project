@@ -25,6 +25,7 @@
                 console.log('Response:', "Deleting ", pers);
                 window.location.reload(false);
             });
+        alert("Deleted: " + person.name);
     }
 
     return (
